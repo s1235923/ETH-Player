@@ -1,23 +1,23 @@
 OpenSource List
 =========================
 
-* Cost.sol (coming soon)
+* Cost.sol (opened)
 
-* Depositlimit.sol (coming soon)
+* Depositlimit.sol (opened)
 
-* ERC20Token.sol (coming soon)
+* ERC20Token.sol (opened)
 
-* InternalModule.sol (coming soon)
+* InternalModule.sol (opened)
 
 * LevelSub.sol (coming soon)
 
 * Round.sol (coming soon)
 
-* RoundManager.sol (coming soon)
+* RoundManager.sol (opened)
 
-* Statistics.sol (coming soon)
+* Statistics.sol (opened)
 
-* TokenChanger.sol (coming soon)
+* TokenChanger.sol (opened)
 
 * /interface/change/ChangeInterfacel.sol (opened)
 
