@@ -4,8 +4,6 @@ import "./interface/levelsub/LevelSubInterface.sol";
 import "./interface/recommend/RecommendInterface.sol";
 import "./InternalModule.sol";
 
-/// @notice 级差模式合约
-/// 级差模式把用户分为N个等级，每个登记有一个级差参数N
 contract LevelSub is LevelSubInterface, InternalModule {
 
     RecommendInterface  private _recommendInf;

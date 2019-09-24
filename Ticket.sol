@@ -116,7 +116,6 @@ contract Ticket is TicketInterface, InternalModule {
 
     function API_NeedClearHistory( address owner ) external APIMethod returns (bool) {
 
-        /// 当支付门票后标记为需要重置资产，返回这个结果后马上设置为false
         if ( _needClearHistory[owner] ) {
             _needClearHistory[owner] = false;
             return true;
