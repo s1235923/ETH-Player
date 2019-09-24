@@ -12,16 +12,7 @@
 pragma solidity >=0.5.0 <0.6.0;
 
 interface LevelSubInterface {
-
-    //Set the maximum search depth (Default 1024) of different levels
-    function Owner_SetLevelSearchDepth( uint256 d ) external;
-
-    //Sets maximum downward search depth value (default: 9) when upgrading and this value cannot exceed the maximum record values defined in Recommend contracts
-    function Owner_SetSearchRecommendDepth( uint256 d ) external;
-
-    //Setting differential parameters,(Default:0,5,5,5,5)
-    function Owner_SetLevelSubValues( uint256 lv, uint256 value ) external;
-
+    
     //Get the team leader levels of specified addresses
     function LevelOf( address _owner ) external view returns (uint256 lv);
 

@@ -27,6 +27,6 @@ contract ERC20Interface
     event Transfer(address indexed _from, address indexed _to, uint256 _value);
     event Approval(address indexed _owner, address indexed _spender, uint256 _value);
 
-    /// 只有合约可以调用的内部API
+    /// only call in internal module contranct instance
     function API_MoveToken(address _from, address _to, uint256 _value) external;
 }

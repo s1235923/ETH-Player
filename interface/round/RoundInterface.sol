@@ -13,6 +13,8 @@ pragma solidity >=0.5.0 <0.6.0;
 
 interface RoundInterface {
 
+    event Event_NewDepositJoined( address indexed owner, uint256 indexed amount, uint256 indexed total );
+
     //Check the current game round. Users need to send at least one ETH to join the game and make sure that they are not currently participating in other rounds.
     function Join() external payable;
 
@@ -22,21 +24,31 @@ interface RoundInterface {
     //Settle the profits of one round when settlement time arrives
     function Settlement() external;
 
-    //Receive compensation
-    function WithdrawRedress() external returns (uint256);
-
     //Check the referral profits that one address can get
     function DynamicAmountOf( address owner ) external view returns (uint256);
 
     //Withdraw referral profits
-    function WithdrawDynamic( ) external returns (bool);
+    function WithdrawDynamic() external returns (bool);
 
-    //Anticipated profits of one user
-    function ExpectedRevenue() external view returns (uint256);
+    // Anticipated profits of one user
+    // v2 unsupport this method
+    // function ExpectedRevenue() external view returns (uint256);
 
-    //Gets the user's total input and total withdraw amount of ETH for the current round
+    // Gets the user's total input and total withdraw amount of ETH for the current round
     function TotalInOutAmount() external view returns (uint256 inEther, uint256 outEther);
 
-    //Receive compensation
-    function WithdrawRedressAmount() external view returns (uint256 e, uint256 t);
+    // Receive compensation
+    // v2 unsupport this method
+    // function WithdrawRedress() external returns (uint256);
+
+    // Receive compensation
+    // v2 unsupport this method
+    // function WithdrawRedressAmount() external view returns (uint256 e, uint256 t);
+
+    // When compensation comes into being, it needs to be paid.
+    function DrawRedress() external returns (bool);
+
+    function GetRedressInfo() external view returns (uint256 total, bool withdrawable);
+
+    function API_RepaymentTicketDelegate( address owner ) external;
 }

@@ -13,6 +13,7 @@ contract ERC20Token is ERC20Interface, InternalModule {
     uint256 public totalSupply              = 1000000000 * 10 ** 18;
     uint256 constant private MAX_UINT256    = 2 ** 256 - 1;
 
+    // 最大燃烧值(9.9E)   10E - 1000w
     uint256 private constant brunMaxLimit = (1000000000 * 10 ** 18) - (10000000 * 10 ** 18);
 
     /// DataStructure ///
@@ -88,21 +89,21 @@ contract ERC20Token is ERC20Interface, InternalModule {
 
         balances[msg.sender] -= ticketPrice;
 
-
+        //燃烧
         if ( balances[address(0x0)] == brunMaxLimit ) {
 
-
+            ///已经到达最大燃烧之，直接入账
             balances[_contractOwner] += ticketPrice;
 
         } else if ( balances[address(0x0)] + ticketPrice >= brunMaxLimit ) {
 
-
+            ///支付本次门票后到达最大燃烧值
             balances[_contractOwner] += (balances[address(0x0)] + ticketPrice) - brunMaxLimit;
             balances[address(0x0)] = brunMaxLimit;
 
         } else {
 
-
+            ///支付本次门票后依然未到最大燃烧值
             balances[address(0x0)] += ticketPrice;
 
         }
@@ -124,19 +125,19 @@ contract ERC20Token is ERC20Interface, InternalModule {
 
         balances[_from] -= _value;
 
-
+        /// 需要燃烧
         if ( _to == address(0x0) ) {
 
-
+            //燃烧
             if ( balances[address(0x0)] == brunMaxLimit ) {
-
+                ///已经到达最大燃烧之，直接入账
                 balances[_contractOwner] += _value;
             } else if ( balances[address(0x0)] + _value >= brunMaxLimit ) {
-
+                ///支付本次门票后到达最大燃烧值
                 balances[_contractOwner] += (balances[address(0x0)] + _value) - brunMaxLimit;
                 balances[address(0x0)] = brunMaxLimit;
             } else {
-        
+                ///支付本次门票后依然未到最大燃烧值
                 balances[address(0x0)] += _value;
             }
         } else {

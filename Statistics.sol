@@ -17,6 +17,8 @@ contract Statistics is StatisticsInterface, InternalModule {
 
     uint256 public AllWithdrawEtherTotalCount = 0;
 
+    uint256 public ActivateUserCount = 0;
+
     struct Deposited {
 
         uint256 startTime;
@@ -97,12 +99,10 @@ contract Statistics is StatisticsInterface, InternalModule {
 
     }
 
-
     function GetStaticProfitTotalAmount() external view returns (uint256) {
         return _staticProfixTotalMapping[msg.sender];
     }
 
-    
     function GetDynamicProfitTotalAmount() external view returns (uint256) {
         return _dynamicProfixTotalMapping[msg.sender];
     }
@@ -143,6 +143,10 @@ contract Statistics is StatisticsInterface, InternalModule {
 
     function API_PushNewDyProfit( address who, address where, uint256 value, bool mtype ) external APIMethod {
         _dyHistory[who].push( DyProfit(where, value, mtype, now) );
+    }
+
+    function API_AddActivate() external APIMethod {
+        ActivateUserCount ++;
     }
 
 }

@@ -19,7 +19,5 @@ interface CostInterface {
 
     //Get the corresponding value of ERC-20 token handling fee
     function WithdrawCost(uint256 value) external view returns (uint256);
-
-    //SetCostProp
-    function Owner_SetCostProp(uint256 newProp) external;
+    
 }

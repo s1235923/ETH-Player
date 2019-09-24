@@ -39,13 +39,21 @@ interface StatisticsInterface {
     //The following are the methods that can be called by the round contract, most of which are only for data statistics and have nothing to do with funds.
     function API_NewPlayer( address player ) external;
 
+    //When the new address is invested, increase the statistics, who is the right amount to invest
     function API_NewJoin( address who, uint256 when, uint256 value ) external;
 
+    //Whenever the address is settled, the record records which address is settled.
     function API_NewSettlement( address who, uint256 when ) external;
 
+    //Add static cumulative data
     function API_AddStaticTotalAmount( address player, uint256 value ) external;
 
+    //Add dynamic cumulative data
     function API_AddDynamicTotalAmount( address player, uint256 value ) external;
 
+    //Used to record the dynamic revenue of a given address
     function API_PushNewDyProfit( address who, address where, uint256 value, bool mtype ) external;
+
+    //Add new statistics when the new address is activated
+    function API_AddActivate() external;
 }
